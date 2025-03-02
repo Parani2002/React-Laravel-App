@@ -31,10 +31,14 @@ class AuthController extends Controller
             return ['message' => 'The provided credentials are incorrect'];
         }
         $token = $user->createToken($user->name);
-        return [
-            'user' => $user,
-            'token' => $token,
-        ];
+        // return [
+        //     'user' => $user,
+        //     'token' => $token,
+        // ];
+        return response()->json([
+            'message' => 'registered successfully',
+            'statuscode' => '200',
+        ]);
     }
     public function logout(Request $request){
         $request -> user() -> tokens() -> delete();
